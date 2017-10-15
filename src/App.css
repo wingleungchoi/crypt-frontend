@@ -22,6 +22,30 @@
   font-size: large;
 }
 
+.price-box {
+  max-width: 240px;
+  border: 1px solid;
+}
+
+.price-box-header {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
+.price-box-content {
+  font-size: 12px;
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+}
+
+.price-box-subcontent {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
