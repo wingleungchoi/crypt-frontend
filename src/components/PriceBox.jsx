@@ -1,7 +1,7 @@
 /* eslint no-unused-vars: ["error", { "varsIgnorePattern": "React|Root|PriceBoxContainer" }] */
 import React from 'react'
 const PriceBox = (props) => {
-  const { index } = props
+  const { index, price } = props
   return (
     <div
       index={index}
@@ -10,8 +10,9 @@ const PriceBox = (props) => {
       <div
         className="price-box-header"
       >
-        <span>Bitcoin</span>
-        <span>$1315645.135156456</span>
+        <span>{index}</span>
+        <span>{price.base}</span>
+        <span>{price.price}</span>
       </div>
       <div
         className="price-box-content"
@@ -20,13 +21,13 @@ const PriceBox = (props) => {
           className="price-box-subcontent"
         >
           <span>volume</span>
-          <span>2923232.23565444</span>
+          <span>{price.volume}</span>
         </div>
         <div
           className="price-box-subcontent"
         >
           <span>change</span>
-          <span>-11.7312321</span>
+          <span>{price.change}</span>
         </div>
       </div>
     </div>
