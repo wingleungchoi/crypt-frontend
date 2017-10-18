@@ -1,15 +1,9 @@
-/* eslint no-unused-vars: ["error", { "varsIgnorePattern": "React|PriceBox" }] */
-import PropTypes from 'prop-types'
+/* eslint no-unused-vars: ["error", { "varsIgnorePattern": "React|PriceBox|PriceList|LoadingPlaceholder" }] */
 import React, { Component } from 'react'
-import _map from 'lodash/fp/map'
 
 import { subscribeToPriceTricker } from '../utils/socket'
-import LoadingPage from '../components/LoadingPage'
-import PriceBox from '../components/PriceBox'
-
-const propTypes = {
-  index: PropTypes.number.isRequired
-}
+import LoadingPlaceholder from '../components/LoadingPlaceholder'
+import PriceList from '../components/PriceList'
 
 class PriceBoxContainer extends Component {
   constructor (props) {
@@ -22,7 +16,7 @@ class PriceBoxContainer extends Component {
       if (err) {
         console.log('err', err)
         this.setState({
-          timestamp: 'backend does not work'
+          prices: []
         })
       } else {
         this.setState({
@@ -35,11 +29,9 @@ class PriceBoxContainer extends Component {
   render () {
     // const { index } = this.props
     return (this.state.prices.length > 0)
-      ? _map((price, i) => <PriceBox index={i} price={price}/>, this.state.prices)
-      : <LoadingPage/>
+      ? <PriceList prices={this.state.prices}/>
+      : <LoadingPlaceholder/>
   }
 }
-
-PriceBoxContainer.propTypes = propTypes
 
 export default PriceBoxContainer
